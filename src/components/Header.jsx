@@ -1,28 +1,38 @@
 import PropTypes from 'prop-types';
+import { NavLink} from 'react-router-dom';
 
-function Header({ text, bgColor, textColor }) {
+function Header({ bgColor, textColor }) {
     const headerStyles = {
         backgroundColor: bgColor,
-        color: textColor
     };
+
+    const linkStyles = {
+        color: textColor,
+        padding: '10px',
+        textDecoration: 'none'
+    }
+
 
         return (
             <header style={headerStyles}>
                 <div className='container'>
-                    <h2>{text}</h2>
+                <NavLink to="/" style={linkStyles}>
+                    Home
+                </NavLink>
+                <NavLink to="/about" style={linkStyles}>
+                    About
+                </NavLink>
                 </div>
             </header>
         );
     }
 
 Header.defaultProps = {
-    text: 'Default text',
-    bgColor: 'rgba(0,0,0,0.4)',
+    bgColor: 'rgba(0, 0, 0, 0.5)',
     textColor: '#ff6a95'
 };
 
 Header.propTypes = {
-    text: PropTypes.string,
     bgColor: PropTypes.string,
     textColor: PropTypes.string
 };
